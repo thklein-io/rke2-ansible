@@ -99,7 +99,6 @@
         value: "{{ node_ip }}"
   when: (node_ip is defined) and (node_ip|length > 0)
   register: updated_rke2_config
-  changed_when: false
 
 - name: Update rke2_config to take value of updated_rke2_config  # noqa no-handler
   set_fact:
@@ -115,7 +114,6 @@
         value: "{{ node_name }}"
   when: (node_name is defined) and (node_name|length > 0)
   register: updated_rke2_config
-  changed_when: false
 
 - name: Update rke2_config to take value of updated_rke2_config  # noqa no-handler
   set_fact:
@@ -131,7 +129,6 @@
         value: "{{ bind_address }}"
   when: (bind_address is defined) and (bind_address|length > 0)
   register: updated_rke2_config
-  changed_when: false
 
 - name: Update rke2_config to take value of updated_rke2_config  # noqa no-handler
   set_fact:
@@ -148,7 +145,6 @@
         value: "{{ advertise_address }}"
   when: (advertise_address is defined) and (advertise_address|length > 0)
   register: updated_rke2_config
-  changed_when: false
 
 - name: Update rke2_config to take value of updated_rke2_config  # noqa no-handler
   set_fact:
@@ -164,7 +160,6 @@
         value: "{{ node_external_ip }}"
   when: (node_external_ip is defined) and (node_external_ip|length > 0)
   register: updated_rke2_config
-  changed_when: false
 
 - name: Update rke2_config to take value of updated_rke2_config  # noqa no-handler
   set_fact:
@@ -241,6 +236,8 @@
   set_fact:
     tmp_sha1: "{{ tmp_config.stat.checksum }}"
   changed_when: false
+
+
 
 - name: Drop in final /etc/rancher/rke2/config.yaml
   copy:
