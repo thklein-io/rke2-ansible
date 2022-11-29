@@ -45,3 +45,13 @@ rke2_config: {}
 # See https://docs.rke2.io/helm/#automatically-deploying-manifests-and-helm-charts
 # Add manifest files by specifying the directory path on the control host
 # manifest_config_file_path: "{{ playbook_dir }}/sample_files/manifest/"
+
+# kube-vip
+# See https://kube-vip.io/
+# kube_vip_enabled: true
+# kube_vip_ip: 1.2.3.4
+# kube_vip_version: v0.5.5
+# kube_vip_interface: ""
+# kube_vip_api_cidr: "24"
+# kube_vip_svc_enable: false
+

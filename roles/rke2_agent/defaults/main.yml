@@ -1,2 +1,2 @@
 ---
-kubernetes_api_server_host: "{{ hostvars[groups['rke2_servers'][0]].inventory_hostname }}"
+kubernetes_api_server_host: "{{ kube_vip_ip if kubevip_enabled else '' | default hostvars[groups['rke2_servers'][0]].inventory_hostname }}"

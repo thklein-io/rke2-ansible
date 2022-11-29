@@ -1,4 +1,26 @@
 ---
+#
+# Custom manifests/addons
+# -> We're making sure, that *all* servers have the same files
+#
+- name: Add manifest files
+  include_role:
+    name: rke2_common
+    tasks_from: add-manifest-addons.yml
+  when:
+    - manifest_config_file_path is defined
+    - manifest_config_file_path | length > 0
+
+- name: Add kube-vip files
+  include_role:
+    name: rke2_common
+    tasks_from: add-kube-vip.yml
+  when:
+    - kube_vip_enabled | bool
+
+#
+# Setup RKE2
+#
 
 - name: RKE2 agent and server tasks
   vars:

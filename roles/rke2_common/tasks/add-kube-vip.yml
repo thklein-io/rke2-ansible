@@ -1,0 +1,11 @@
+- name: Add kube-vip manifest
+  ansible.builtin.template:
+    src: "{{ item }}"
+    dest: "/var/lib/rancher/rke2/server/manifests/{{ item | basename | regex_replace('.j2$', '') }}"
+    owner: root
+    group: root
+    mode: 0664
+  with_fileglob:
+    - "templates/kube-vip.yml.j2"
+  when:
+    - kube_vip_enabled | bool
